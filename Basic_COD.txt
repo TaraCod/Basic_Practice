@@ -42,6 +42,31 @@ struct Node* createNode(int new_data) {
     return new_node;
 }
 
+int findNthFromLast(struct Node* head, int N) {
+    int len = 0, i;
+  
+    // Pointer to store the copy of head
+    struct Node* temp = head;
+
+    // Count the number of nodes in Linked List
+    while (temp != NULL) {
+        temp = temp->next;
+        len++;
+    }
+
+    // Check if value of N is not more than length of the linked list
+    if (len < N)
+        return -1;
+
+    temp = head;
+
+    // Get the (len - N + 1)th node from the beginning
+    for (i = 1; i < len - N + 1; i++)
+        temp = temp->next;
+
+    return temp->data;
+}
+
 int main() {
   
     // Create the linked list 2->3->4->5
